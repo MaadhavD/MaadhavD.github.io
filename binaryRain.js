@@ -58,3 +58,8 @@ function drawRain() {
 
 // Call the drawRain function repeatedly to create the animation
 setInterval(drawRain, 33);
+
+window.addEventListener('load', function() {
+  runBinaryRain();
+});
+
