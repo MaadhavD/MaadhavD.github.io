@@ -16,4 +16,35 @@ function generateQuote() {
   const quote = quotes[randomIndex];
   document.getElementById("quote").innerHTML = quote;
 }
+const randomNumber = Math.floor(Math.random() * 100) + 1;
+let numGuesses = 0;
+
+function checkGuess() {
+  const guessInput = document.getElementById("guess-input");
+  const guess = Number(guessInput.value);
+  if (guess < 1 || guess > 100) {
+    document.getElementById("result").textContent = "Please enter a number between 1 and 100.";
+  } else if (guess === randomNumber) {
+    numGuesses++;
+    document.getElementById("result").textContent = `Congratulations! You guessed the number in ${numGuesses} guesses.`;
+    disableGame();
+  } else {
+    numGuesses++;
+    let message = "";
+    if (guess < randomNumber) {
+      message = "Too low. Guess again.";
+    } else {
+      message = "Too high. Guess again.";
+    }
+    document.getElementById("result").textContent = message;
+  }
+  guessInput.value = "";
+  guessInput.focus();
+}
+
+function disableGame() {
+  document.getElementById("guess-input").disabled = true;
+  document.getElementById("result").style.color = "green";
+}
+
 
