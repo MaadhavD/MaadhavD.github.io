@@ -70,7 +70,7 @@ textarea {
 }
 
 input[type="submit"] {
-  background-color: #333;
+  background-color: #0833be;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -83,7 +83,7 @@ input[type="submit"]:hover {
 }
 /* footer styles */
 footer {
-  background-color: #333;
+  background-color: #21d28e;
   color: #fff;
   padding: 1rem;
   text-align: center;
