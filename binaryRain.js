@@ -2,62 +2,74 @@ const canvas = document.getElementById("binaryRainCanvas");
 const context = canvas.getContext("2d");
 let frameCount = 0;
 
-let canvasWidth, canvasHeight, fontSize;
-let drops = [];
+// Setting the width and height of the canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function setup() {
-  canvasWidth = window.innerWidth;
-  canvasHeight = window.innerHeight;
-  fontSize = canvasWidth / 20;
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
-  context.font = `${fontSize}px Arial`;
+// Setting up the letters
+var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ';
+letters = letters.split('');
 
-  for (let i = 0; i < canvasWidth / fontSize; i++) {
-    drops.push(new Drop(i * fontSize, -fontSize, fontSize));
-  }
+// Setting up the columns
+var fontSize = 10,
+    columns = canvas.width / fontSize;
+
+// Setting up the drops
+var drops = [];
+for (var i = 0; i < columns; i++) {
+  drops[i] = 1;
 }
 
+// Setting up the draw function
 function draw() {
-  context.fillStyle = "rgba(0, 0, 0, 0.05)";
-  context.fillRect(0, 0, canvasWidth, canvasHeight);
-
-  for (let i = 0; i < drops.length; i++) {
-    drops[i].update();
-    drops[i].show();
-  }
-
-  requestAnimationFrame(draw);
-}
-
-class Drop {
-  constructor(x, y, fontSize) {
-    this.x = x;
-    this.y = y;
-    this.fontSize = fontSize;
-    this.speed = Math.floor(Math.random() * 10) + 1;
-    this.switchInterval = Math.floor(Math.random() * 100);
-    this.letters = "01";
-    this.currentLetter = this.letters[Math.floor(Math.random() * this.letters.length)];
-  }
-
-  update() {
-    this.y += this.speed;
-
-    if (this.y > canvasHeight) {
-      this.y = -this.fontSize;
-      this.switchInterval = Math.floor(Math.random() * 100);
-      this.currentLetter = this.letters[Math.floor(Math.random() * this.letters.length)];
-    } else if (frameCount % this.switchInterval == 0) {
-      this.currentLetter = this.letters[Math.floor(Math.random() * this.letters.length)];
+  context.fillStyle = 'rgba(0, 0, 0, .1)';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < drops.length; i++) {
+    var text = letters[Math.floor(Math.random() * letters.length)];
+    context.fillStyle = '#0f0';
+    context.fillText(text, i * fontSize, drops[i] * fontSize);
+    drops[i]++;
+    if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+      drops[i] = 0;
     }
   }
+}
 
-  show() {
-    context.fillStyle = "#0F0";
-    context.fillText(this.currentLetter, this.x, this.y);
+// Loop the animation
+setInterval(draw, 33);
+
+// Setting the width and height of the canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Setting up the letters
+var letters = '01';
+letters = letters.split('');
+
+// Setting up the columns
+var fontSize = 10,
+    columns = canvas.width / fontSize;
+
+// Setting up the drops
+var drops = [];
+for (var i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+// Setting up the draw function
+function draw() {
+  .fillStyle = 'rgba(0, 0, 0, .1)';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < drops.length; i++) {
+    var text = letters[Math.floor(Math.random() * letters.length)];
+    context.fillStyle = '#0f0';
+    context.fillText(text, i * fontSize, drops[i] * fontSize);
+    drops[i]++;
+    if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+      drops[i] = 0;
+    }
   }
 }
 
-setup();
-draw();
+// Loop the animation
+setInterval(draw, 33);
