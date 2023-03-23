@@ -1,5 +1,6 @@
 const canvas = document.getElementById("binaryRainCanvas");
 const context = canvas.getContext("2d");
+let frameCount = 0;
 
 let canvasWidth, canvasHeight, fontSize;
 let drops = [];
