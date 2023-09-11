@@ -1,11 +1,10 @@
-/* General styles */
 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #000;
-  color: #fff; /* Set text color to white */
+  color: #fff; 
 }
 
 a {
@@ -23,7 +22,6 @@ ul {
   padding: 0;
 }
 
-/* Header styles */
 
 header {
   background-color: #333;
@@ -47,7 +45,6 @@ nav li {
   margin-right: 1rem;
 }
 
-/* Main styles */
 
 main {
   margin: 2rem;
@@ -62,7 +59,6 @@ h2 {
   margin: 0 0 1rem;
 }
 
-/* Form styles */
 
 form {
   display: flex;
@@ -100,7 +96,6 @@ input[type="submit"]:hover {
   background-color: #555;
 }
 
-/* Footer styles */
 
 footer {
   position: fixed;
@@ -112,7 +107,6 @@ footer {
   text-align: center;
 }
 
-/* Binary rain animation styles */
 
 .canvas-container {
   position: fixed;
